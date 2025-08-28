@@ -1,9 +1,7 @@
 const displayCard = document.getElementById("display-card");
 const glint = document.getElementById("glint");
 
-window.onmousemove = (event) => {
-  updatePerspective(event);
-
+window.addEventListener("mousemove", (event) => {
   const computedStyles = getComputedStyle(displayCard);
   const rotateX = parseInt(computedStyles.getPropertyValue("--js-rotateX"));
   const rotateY = parseInt(computedStyles.getPropertyValue("--js-rotateY"));
@@ -15,7 +13,7 @@ window.onmousemove = (event) => {
   const translation = parseInt(50 * (rotateX - 0.3 * rotateY + 30));
 
   glint.style.translate = `0 ${translation}%`;
-};
+});
 
 // About Card
 

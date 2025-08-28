@@ -8,7 +8,8 @@ for (let i = 0; i < cardList.length; i++) {
   card.style.perspective = "700px";
 }
 
-function updatePerspective(event) {
+// Updates card rotations when the mouse moves
+window.addEventListener("mousemove", (event) => {
   // Max tilt angle along an axis (deg)
   const maxAngle = 20;
 
@@ -47,4 +48,4 @@ function updatePerspective(event) {
       card.style.setProperty("--js-rotateY", `${-angleY}deg`);
     }
   }
-}
+});
