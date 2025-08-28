@@ -1,6 +1,5 @@
 const cardList = document.getElementsByClassName("js-perspective");
 
-console.log(cardList.length);
 for (let i = 0; i < cardList.length; i++) {
   const card = cardList.item(i);
 
@@ -10,8 +9,8 @@ for (let i = 0; i < cardList.length; i++) {
 
 // Updates card rotations when the mouse moves
 window.addEventListener("mousemove", (event) => {
-  // Max tilt angle along an axis (deg)
-  const maxAngle = 20;
+  const maxAxisAngle = 20; // Max tilt angle per axis, if using dual axis approach
+  const maxNetAngle = 25; // Max net tilt angle, if using single axis approach
 
   // Mouse pos
   const mouseX = event.clientX;
@@ -36,16 +35,24 @@ window.addEventListener("mousemove", (event) => {
     const percentX = (2 * relativeX) / width;
     const percentY = (2 * relativeY) / height;
 
-    const angleX = Math.min(Math.max(percentY, -1), 1) * maxAngle;
-    const angleY = -Math.min(Math.max(percentX, -1), 1) * maxAngle;
+    // Reverse the sign of the angle if set to flipped
+    const angleSign = card.classList.contains("js-flip-perspective") ? -1 : 1;
 
-    // Whether to face towards or away from the mouse (default towards)
-    if (card.classList.contains("js-flip-perspective")) {
-      card.style.setProperty("--js-rotateX", `${angleX}deg`);
-      card.style.setProperty("--js-rotateY", `${angleY}deg`);
-    } else {
-      card.style.setProperty("--js-rotateX", `${-angleX}deg`);
-      card.style.setProperty("--js-rotateY", `${-angleY}deg`);
-    }
+    // Single Rotation Axis Approach (Vector)
+    const angle = Math.min(percentX ** 2 + percentY ** 2, 1) * maxNetAngle;
+
+    card.style.setProperty("--js-directionX", `${-percentY}`);
+    card.style.setProperty("--js-directionY", `${percentX}`);
+    card.style.setProperty("--js-angle", `${angleSign * angle}deg`);
+
+    // Dual Rotation Axis Approach
+
+    // !!! Order of rotateX(), rotateY() matters for this approach
+    // !!! (Vertical/horizontal edge will stay parallel depending on order)
+    const angleX = -Math.min(Math.max(percentY, -1), 1) * maxAxisAngle;
+    const angleY = Math.min(Math.max(percentX, -1), 1) * maxAxisAngle;
+
+    card.style.setProperty("--js-rotateX", `${angleSign * angleX}deg`);
+    card.style.setProperty("--js-rotateY", `${angleSign * angleY}deg`);
   }
 });

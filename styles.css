@@ -60,7 +60,12 @@ img {
   transition: 300ms ease;
 }
 #display-card:hover {
-  transform: rotateX(var(--js-rotateX)) rotateY(var(--js-rotateY));
+  /* Single Rotation Axis */
+  transform: rotate3d(var(--js-directionX), var(--js-directionY), 0, var(--js-angle));
+
+  /* Dual Rotation Axis (Old) */
+  /* transform: rotateX(var(--js-rotateX)) rotateY(var(--js-rotateY)); */
+
   scale: 1.05;
 }
 
