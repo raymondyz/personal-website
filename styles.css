@@ -367,3 +367,87 @@ mark {
   background-color: transparent;
   color: rgb(160, 101, 215);
 }
+
+
+/* ============================================================================================== */
+/* ==== COOKIES ================================================================================= */
+/* ============================================================================================== */
+
+.draggable-cookie {
+  position: absolute;
+  
+  font-size: 5rem;
+
+  padding: 50px;
+  transform: translate(-50%, -50%);
+
+  user-select: none;
+}
+
+#cookie-popup {
+  width: 400px;
+  position: absolute;
+  bottom: 50px;
+
+  border: 3px solid rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  background-color: rgba(255, 241, 244, 0.2);
+  backdrop-filter: blur(3px);
+  
+
+  padding: 30px;
+  transition: all 0.8s ease-in;
+
+  right: -800px;
+  pointer-events: none;
+}
+
+#cookie-popup h2 {
+  margin: 0;
+
+  font-size: 1.25rem;
+}
+
+#cookie-popup p {
+  font-size: 0.875rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.button-group {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+
+  gap: 30px;
+}
+
+#cookie-popup button {
+  width: 100%;
+
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 1rem;
+  font-weight: bold;
+}
+#accept-button:hover {
+  background-color: rgb(47, 105, 47);
+  color: white;
+}
+#accept-button, #accept-button:active {
+  background-color: rgb(135, 197, 135);
+}
+
+#decline-button:hover {
+  background-color: rgb(193, 69, 58);
+  color: white;
+}
+#decline-button, #decline-button:active {
+  background-color: rgb(234, 152, 144);
+}
