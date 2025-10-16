@@ -6,91 +6,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raymond Z</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <main>
-      <div class="main-container">
-        <div id="display-card-container">
-          <div
-            id="display-card"
-            class="card js-perspective js-flip-perspective"
-          >
-            <div id="popout-1" class="popout">
-              <img src="/assets/images/raymond-3.jpg" />
-            </div>
+      <div id="display-card-container">
+        <div id="display-card" class="card js-perspective js-flip-perspective">
+          <div id="popout-1" class="popout">
+            <img src="/assets/images/raymond-3.jpg" />
+          </div>
 
-            <div id="main-photo">
-              <img src="/assets/images/raymond-1.jpg" />
-            </div>
+          <div id="main-photo">
+            <img src="/assets/images/raymond-1.jpg" />
+          </div>
 
-            <div id="display-links">
-              <a class="link discord-color" target="_blank">
-                <img src="/assets/icons/discord-icon.png" />
-                <div class="tooltip">DISCORD</div>
-              </a>
+          <div id="display-links">
+            <a class="link resume-color" href="./resume" target="_blank">
+              <img src="/assets/icons/resume-icon.png" />
+              <div class="tooltip">RESUME</div>
+            </a>
 
-              <a
-                class="link insta-color"
-                href="https://www.instagram.com/raymond.y.z/"
-                target="_blank"
-              >
-                <img src="/assets/icons/insta-icon.png" />
-                <div class="tooltip">INSTAGRAM</div>
-              </a>
+            <a
+              class="link insta-color"
+              href="https://www.instagram.com/raymond.y.z/"
+              target="_blank"
+            >
+              <img src="/assets/icons/insta-icon.png" />
+              <div class="tooltip">INSTAGRAM</div>
+            </a>
 
-              <a
-                class="link github-color"
-                href="https://github.com/raymondyz"
-                target="_blank"
-              >
-                <img src="/assets/icons/github-icon.png" />
-                <div class="tooltip">GITHUB</div>
-              </a>
+            <a
+              class="link github-color"
+              href="https://github.com/raymondyz"
+              target="_blank"
+            >
+              <img src="/assets/icons/github-icon.png" />
+              <div class="tooltip">GITHUB</div>
+            </a>
 
-              <a
-                class="link linkedin-color"
-                href="https://www.linkedin.com/in/raymond-zou-14b77b2ba/"
-                target="_blank"
-              >
-                <img src="/assets/icons/linkedin-icon.png" />
-                <div class="tooltip">LINKEDIN</div>
-              </a>
-            </div>
+            <a
+              class="link linkedin-color"
+              href="https://www.linkedin.com/in/raymond-zou-14b77b2ba/"
+              target="_blank"
+            >
+              <img src="/assets/icons/linkedin-icon.png" />
+              <div class="tooltip">LINKEDIN</div>
+            </a>
+          </div>
 
-            <div id="popout-2" class="popout">
-              <img src="/assets/images/raymond-2.jpg" />
-            </div>
+          <div id="popout-2" class="popout">
+            <img src="/assets/images/raymond-2.jpg" />
+          </div>
 
-            <div id="front-glass">
-              <div id="glint"></div>
-            </div>
+          <div id="front-glass">
+            <div id="glint"></div>
           </div>
         </div>
-        <div id="about-card">
+      </div>
+      <div id="about-card-container">
+        <div id="about-card" class="frosted-glass">
           <h2>Raymond Zou</h2>
           <p>Professional Procrastinator (PP)</p>
           <h4><mark>Age:</mark> <span id="age">17</span></h4>
-          <h4><mark>Birthday:</mark> forgor 💀</h4>
-          <h4>Doesnt eat food, sleeps at 5am</h4>
           <h4>prevented multiple murders (self control)</h4>
+          <p>
+            did you know that there are more atoms of hydrogen in a single
+            molecule of water than there are stars of the entire solar system?
+            😮
+          </p>
         </div>
-      </div>
-      <div id="cookie-popup">
-        <h2>This website uses cookies</h2>
-        <p>
-          This website gives you the best experience by providing you cookies.
-          By clicking "Accept" you consent to receiving delicious cookies. You
-          may visit
-          <span id="settings" class="underline">settings</span> to manage which
-          cookies are accepted.
-          <span id="policy" class="underline">Cookie Policy</span>
-        </p>
-        <div class="button-group">
-          <button id="accept-button">Accept Cookies</button>
-          <button id="decline-button">Decline Cookies</button>
-        </div>
+        <a id="projects-button" href="./projects.html" class="button">
+          <h2>PROJECTS</h2>
+        </a>
       </div>
     </main>
+    <div id="cookie-popup" class="frosted-glass">
+      <h2>This website uses cookies</h2>
+      <p>
+        This website gives you the best experience by providing you cookies. By
+        clicking "Accept" you consent to receiving delicious cookies. You may
+        visit
+        <span id="settings" class="underline">settings</span> to manage which
+        cookies are accepted.
+        <span id="policy" class="underline">Cookie Policy</span>
+      </p>
+      <div class="button-group">
+        <button id="accept-button">Accept Cookies</button>
+        <button id="decline-button">Decline Cookies</button>
+      </div>
+    </div>
+    <div id="cookie-container"></div>
+
     <script src="perspective.js"></script>
     <script src="index.js"></script>
     <script src="cookie.js"></script>

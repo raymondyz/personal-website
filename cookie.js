@@ -2,7 +2,9 @@ const popup = document.getElementById("cookie-popup");
 const acceptButton = document.getElementById("accept-button");
 const declineButton = document.getElementById("decline-button");
 
-const cookieContainer = document.body;
+const cookieContainer = document.getElementById("cookie-container");
+
+let currentlyDragging = null;
 
 let cookieLevel = 0;
 const cookiePhrase = [
@@ -25,8 +27,6 @@ const cookiePhrase = [
   "Cookie Clicker Amounts Of",
 ];
 
-const cookieList = [];
-
 function addCookie() {
   cookie = document.createElement("div");
   cookie.classList.add("draggable-cookie");
@@ -34,22 +34,15 @@ function addCookie() {
   cookie.style.top = Math.random() * window.innerHeight + "px";
   cookie.style.left = Math.random() * window.innerWidth + "px";
 
-  cookieList.push(cookie);
   cookieContainer.appendChild(cookie);
-}
-
-function removeAllCookies() {
-  for (const cookie of cookieList) {
-    cookie.remove();
-  }
 }
 
 declineButton.addEventListener("click", (event) => {
   popup.style.right = "-800px";
   popup.style.pointerEvents = "none";
 
-  removeAllCookies();
-
+  cookieContainer.remove();
+  
   setTimeout(() => {
     popup.remove();
   }, 1000);
@@ -64,22 +57,45 @@ acceptButton.addEventListener("click", (event) => {
   cookieLevel = Math.min(cookieLevel + 0.5, cookiePhrase.length - 1);
 });
 
-window.addEventListener("mousemove", (event) => {
-  // dragged with left mouse button
-  if (event.buttons == 1) {
-    const targetElement = event.target;
+function moveCookie(targetCookie, posX, posY) {
+  posX = Math.max(0, Math.min(window.innerWidth, posX));
+  posY = Math.max(0, Math.min(window.innerHeight, posY));
+  targetCookie.style.left = `${posX}px`;
+  targetCookie.style.top = `${posY}px`;
+}
 
-    if (targetElement.classList.contains("draggable-cookie")) {
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
+document.addEventListener("mousedown", (event) => {
+  const targetElement = event.target;
 
-      targetElement.style.top = `${mouseY}px`;
-      targetElement.style.left = `${mouseX}px`;
+  if (event.buttons === 1 && targetElement.classList.contains("draggable-cookie")) {
+    currentlyDragging = targetElement
 
-      const parentElement = targetElement.parentNode;
-      parentElement.appendChild(targetElement);
-    }
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    moveCookie(targetElement, mouseX, mouseY);
+
+    // Move cookie to end of cookie container
+    const parentElement = targetElement.parentNode;
+    parentElement.appendChild(targetElement);
   }
+});
+
+document.addEventListener("mousemove", (event) => {
+  if (event.buttons === 1 && currentlyDragging !== null) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    moveCookie(currentlyDragging, mouseX, mouseY);
+
+    // Move cookie to end of cookie container
+    const parentElement = currentlyDragging.parentNode;
+    parentElement.appendChild(currentlyDragging);
+  }
+})
+
+document.addEventListener("mouseup", (event) => {
+  currentlyDragging = null;
 });
 
 window.addEventListener("load", (event) => {
