@@ -1,3 +1,45 @@
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    overflow: scroll;
+  }
+
+  main {
+    flex-direction: column;
+    padding-top: 20%;
+    gap: 20px;
+    padding-bottom: 500px;
+  }
+
+  #display-card-container {
+    width: 120% !important;
+    transform-style: flat !important;
+  }
+
+  #popout-2 {
+    bottom: 5% !important;
+  }
+
+  #display-links {
+    height: calc((4*var(--size)) + (3*var(--gap))) !important;
+    width: var(--size) !important;
+
+    flex-direction: column;
+    right: 0 !important;
+    left: auto !important;
+    bottom: 0;
+  }
+
+  #display-links .tooltip {
+    display: none;
+  }
+
+}
+
+
 main {
   display: flex;
   justify-content: center;
@@ -30,6 +72,7 @@ img {
 #display-card {
   background: linear-gradient(to bottom right, transparent, transparent, thistle);
 
+  width: 100%;
   aspect-ratio: 9/13;
   margin: 30% 20% 15% 35%;
 
@@ -43,7 +86,7 @@ img {
   transition: 300ms ease;
 }
 
-#display-card:hover {
+#display-card-container:hover #display-card {
   /* Single Rotation Axis */
   transform: rotate3d(var(--js-directionX), var(--js-directionY), 0, var(--js-angle));
 
@@ -451,7 +494,7 @@ img {
 
 #cookie-popup {
   width: 400px;
-  position: absolute;
+  position: fixed;
   bottom: 50px;
 
   border-radius: 20px;
