@@ -37,6 +37,16 @@
     display: none;
   }
 
+  /* Disable cookie popup on small screens */
+  
+  #cookie-popup {
+    visibility: hidden;
+  }
+
+  #cookie-container {
+    visibility: hidden;
+  }
+
 }
 
 
